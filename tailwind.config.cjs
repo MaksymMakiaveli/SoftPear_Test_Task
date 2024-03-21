@@ -8,7 +8,11 @@ module.exports = {
         xl: '1180px',
       },
     },
-    extend: {},
+    extend: {
+      gradientColorStops: {
+        'gradient-text': 'bg-gradient-to-b from-[#ffff] to-[#AEBCE1]',
+      },
+    },
   },
   plugins: [],
 };

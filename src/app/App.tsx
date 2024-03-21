@@ -1,10 +1,11 @@
 import { LayoutHeader } from '../widgets/layout-header';
-import { Container } from '@entities/layout';
+import { Hero } from '../widgets/hero';
 
 export const App = () => {
   return (
-    <Container>
+    <div className="h-full min-h-screen overflow-y-auto pt-[76px]">
       <LayoutHeader />
-    </Container>
+      <Hero />
+    </div>
   );
 };

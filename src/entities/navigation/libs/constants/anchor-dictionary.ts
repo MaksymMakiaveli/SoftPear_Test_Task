@@ -21,13 +21,9 @@ const DICTIONARY = {
   },
 } as const;
 
-// const asArray = () => {
-//   return Object.values(DICTIONARY).map((v) => v);
-// };
-
 export const ANCHOR_DICTIONARY = {
   ...DICTIONARY,
-  get asArray(): Array<(typeof DICTIONARY)[keyof typeof DICTIONARY]> {
+  get asArray() {
     return Object.values(DICTIONARY);
   },
 } as const;

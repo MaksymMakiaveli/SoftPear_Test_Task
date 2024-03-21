@@ -13,7 +13,9 @@ export const AnchorList = (props: Props) => {
           each={ANCHOR_DICTIONARY.asArray}
           render={(anchor) => (
             <li key={anchor.path}>
-              <Anchor to={anchor.path}>{anchor.label}</Anchor>
+              <Anchor className="max-xl:text-sm" to={anchor.path}>
+                {anchor.label}
+              </Anchor>
             </li>
           )}
         />
