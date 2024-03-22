@@ -41,7 +41,7 @@ export const Card = (props: Props) => {
 
   return (
     <article className={classes} ref={innerRef} {...restProps}>
-      <div className=" flex h-full gap-7 px-0 max-lg:flex-col md:pl-10">
+      <div className=" flex h-full gap-4 px-0 max-lg:flex-col md:gap-7 md:pl-10">
         <div className="flex-1 flex-col items-start justify-center pt-6 max-md:px-4 md:pt-[60px]">
           <h6 className="text-[40px] font-bold leading-[44px] text-slate-800">{label}</h6>
           <div className="flex flex-col gap-2 pt-2 text-left text-base leading-tight text-slate-700 md:pt-3">
