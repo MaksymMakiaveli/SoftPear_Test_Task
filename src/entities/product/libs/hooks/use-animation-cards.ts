@@ -1,64 +1,82 @@
-import { useCallback, useLayoutEffect, useRef } from 'react';
+import { RefObject, useCallback, useEffect, useRef } from 'react';
 
-export const useAnimationCards = () => {
+const STEP = 1.2;
+
+export const useAnimationCards = (scrollArea: RefObject<HTMLDivElement>) => {
   const cardsWrapperRef = useRef<HTMLDivElement>(null);
+  const cards = useRef<HTMLElement[]>([]);
+  const isInView = useRef<boolean>(false);
+  const translateY = useRef<number>(0);
+  const delta = useRef<number>(0);
+  const previousScrollTop = useRef<number>(0);
 
-  const cards = useRef<Set<HTMLElement>>(new Set());
+  const handleScroll = useCallback((event: Event) => {
+    if (!isInView.current || cards?.current?.length === 0 || !scrollArea.current) return;
 
-  const currentPos = useRef(0);
+    requestAnimationFrame(() => {
+      const scrollTop = (event.target as HTMLDivElement).scrollTop;
+      if (previousScrollTop.current === 0) {
+        previousScrollTop.current = scrollTop;
+      }
+      delta.current = scrollTop - previousScrollTop.current;
 
-  const isInView = useRef(false);
+      previousScrollTop.current = scrollTop;
 
-  const handleScroll = (event: Event) => {
-    if (!isInView.current || !cards.current.size) return;
+      cards.current.forEach((card, idx) => {
+        const offset = (card.offsetHeight / 1.3) * idx;
 
-    const { deltaY } = event as WheelEvent;
+        const amount = (delta.current / STEP) * -1;
+        const value = amount + translateY.current;
 
-    if (deltaY > 0) {
-      cards.current.forEach((card) => {
-        console.log(card.offsetHeight);
+        if (Math.abs(value) >= offset) return;
+
+        translateY.current = value;
+
+        card.style.transform = `translateY(${translateY.current}px)`;
       });
-    } else {
-      cards.current.forEach((card) => {});
-    }
-  };
+    });
+  }, []);
 
   const setupCardNode = useCallback((node: HTMLElement | null) => {
     if (node) {
-      cards.current.add(node);
+      cards.current.push(node);
     }
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.target === cardsWrapperRef.current) {
             isInView.current = true;
+          } else {
+            if (isInView.current) {
+              console.log('not in view');
+              isInView.current = false;
+            }
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.3 },
     );
 
     if (cardsWrapperRef.current) {
       observer.observe(cardsWrapperRef.current);
     }
 
-    window.addEventListener('wheel', handleScroll);
+    scrollArea.current?.addEventListener('scroll', handleScroll);
 
     return () => {
       if (cardsWrapperRef.current) {
         observer.unobserve(cardsWrapperRef.current);
       }
 
-      window.removeEventListener('wheel', handleScroll);
+      scrollArea.current?.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return {
     cardsWrapperRef,
     setupCardNode,
-    handleScroll,
   };
 };

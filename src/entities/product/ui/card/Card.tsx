@@ -33,7 +33,7 @@ export const Card = (props: Props) => {
   const _description = Array.isArray(description) ? description : [description];
 
   const classes = cl(
-    'bg-white overflow-hidden lg:h-[426px] rounded-[40px] md:shadow-[0px_-4px_40px_rgba(35,36,66,0.4)] shadow-[0px_-4px_30px_rgba(35,36,66,0.3)]',
+    'bg-white overflow-hidden lg:h-[426px] rounded-[40px] md:shadow-[0px_-4px_40px_rgba(35,36,66,0.4)] shadow-[0px_-4px_30px_rgba(35,36,66,0.3)] top-0 z-10',
     className,
   );
 

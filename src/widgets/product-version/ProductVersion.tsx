@@ -5,6 +5,7 @@ import Phones1 from '@assets/Phones1.png';
 import Phones2 from '@assets/Phones2.png';
 import Phones3 from '@assets/Phones3.png';
 import { Each } from '@shared/UI';
+import { RefObject } from 'react';
 
 const MOCK_DATA = [
   {
@@ -34,8 +35,14 @@ const MOCK_DATA = [
   },
 ];
 
-export const ProductVersion = () => {
-  const { cardsWrapperRef, setupCardNode } = useAnimationCards();
+interface Props {
+  scrollArea: RefObject<HTMLDivElement>;
+}
+
+export const ProductVersion = (props: Props) => {
+  const { scrollArea } = props;
+
+  const { cardsWrapperRef, setupCardNode } = useAnimationCards(scrollArea);
 
   return (
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#0E1121] to-[#3A3C67]">
@@ -45,28 +52,35 @@ export const ProductVersion = () => {
         alt="Graphic Lines"
         width="2450"
         height="931"
-        className="z-1 pointer-events-none absolute left-0 right-0 top-0 w-[2355px] max-w-none -translate-x-[14%] -translate-y-[10%] rotate-[9.39deg]  select-none md:rotate-[9.39deg]  xl:w-[164%]"
+        className="z-1 pointer-events-none absolute  left-0 right-0 top-0 w-[2355px] max-w-none -translate-x-[14%] -translate-y-[10%] rotate-[9.39deg]  select-none md:rotate-[9.39deg]  xl:w-[164%]"
       />
-      <Container className="z-2 pb-[60px] pt-[20px] md:pb-[87px] md:pt-[70px]">
-        <h3 className="gradient-text max-w-[690px] bg-clip-text text-4xl font-semibold text-transparent text-white md:text-6xl">
-          Choose your own version of the product
-        </h3>
-        <p className="max-w-[380px] pt-4 text-base text-neutral-100 md:text-lg">
-          You can choose not only different product logic and functionality but also stylistics!
-        </p>
-
-        <div ref={cardsWrapperRef} className="flex min-h-[821.586px] flex-col gap-3 pt-5 md:pt-8">
+      <Container className="z-2 pb-4  md:pt-[70px]">
+        <div>
+          <h3 className="gradient-text max-w-[690px] bg-clip-text text-4xl font-semibold text-transparent text-white md:text-6xl">
+            Choose your own version of the product
+          </h3>
+          <p className="max-w-[380px] pt-4 text-base text-neutral-100 md:text-lg">
+            You can choose not only different product logic and functionality but also stylistics!
+          </p>
+        </div>
+        <div
+          ref={cardsWrapperRef}
+          className="relative flex flex-col gap-3 overflow-hidden pt-5 md:pt-8"
+        >
           <Each
             each={MOCK_DATA}
-            render={(item) => (
-              <Card
-                innerRef={setupCardNode}
-                key={item.label}
-                description={item.description}
-                imageSrc={item.imgSrc}
-                label={item.label}
-              />
-            )}
+            render={(item) => {
+              return (
+                <Card
+                  innerRef={setupCardNode}
+                  key={item.label}
+                  description={item.description}
+                  imageSrc={item.imgSrc}
+                  label={item.label}
+                  className=" shrink-0 will-change-transform"
+                />
+              );
+            }}
           />
         </div>
       </Container>

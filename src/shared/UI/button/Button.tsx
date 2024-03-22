@@ -3,14 +3,14 @@ import cl from 'classnames';
 const Variant = {
   primary: `
   bg-white rounded-xl text-blue-950 
-  enabled:md:hover:bg-indigo-400 enabled:md:hover:text-white
-  enabled:active:text-white enabled:active:bg-indigo-400
+  enabled:md:hover:bg-indigo-400 enabled:md:hover:text-white hover:border-indigo-400
+  enabled:active:text-white enabled:active:bg-indigo-400 active:border-indigo-400
   enabled:focus-visible:ring-2 enabled:focus-visible:ring-2 enabled:focus-visible:ring-blue-400
   `,
   outline: `
   bg-transparent border border-[#1F1F56] border-solid text-[#1F1F56] rounded-xl
-  enabled:md:hover:bg-indigo-400 enabled:md:hover:text-white
-  enabled:active:text-white enabled:active:bg-indigo-400
+  enabled:md:hover:bg-indigo-400 enabled:md:hover:text-white hover:border-indigo-400
+  enabled:active:text-white enabled:active:bg-indigo-400 active:border-indigo-400
   enabled:focus-visible:ring-2 enabled:focus-visible:ring-2 enabled:focus-visible:ring-blue-400
   `,
 } as const;
