@@ -24,7 +24,7 @@ export const CardList = (props: Props) => {
   return (
     <div
       ref={wrapperRef}
-      className="flex flex-col gap-3 pt-5 md:pt-8"
+      className="flex flex-col gap-3"
       style={{
         marginTop: -(headerWrapperSize - headerSize - PRODUCT_VERSION_CONFIG.SECTION_OFFSET),
       }}
@@ -33,11 +33,17 @@ export const CardList = (props: Props) => {
         each={MOCK_DATA}
         render={(item, index, arr) => {
           let styles: CSSProperties = {};
+          let top = undefined;
 
           if (index === 0) {
             styles = {
               minHeight: firstCardHeight,
             };
+
+            top =
+              firstCardHeight +
+              PRODUCT_VERSION_CONFIG.SECTION_OFFSET -
+              singleCardSize * (arr.length - 1);
           } else if (arr.length - 1 === index) {
             styles = {
               marginTop: -(
@@ -50,10 +56,17 @@ export const CardList = (props: Props) => {
             styles = {
               minHeight:
                 firstCardHeight +
-                PRODUCT_VERSION_CONFIG.CARD_VISIBLE_HEIGHT -
+                (PRODUCT_VERSION_CONFIG.CARD_VISIBLE_HEIGHT +
+                  PRODUCT_VERSION_CONFIG.SECTION_OFFSET) -
                 singleCardSize * index,
               marginTop: singleCardSize * index - firstCardHeight,
             };
+
+            top =
+              firstCardHeight -
+              singleCardSize * index -
+              PRODUCT_VERSION_CONFIG.CARD_VISIBLE_HEIGHT -
+              (PRODUCT_VERSION_CONFIG.LAYOUT_HEADER_HEIGHT + PRODUCT_VERSION_CONFIG.SECTION_OFFSET);
           }
 
           return (
@@ -66,7 +79,7 @@ export const CardList = (props: Props) => {
                 label={item.label}
                 className="sticky"
                 style={{
-                  top: (PRODUCT_VERSION_CONFIG.HEADER_TOP + headerSize) * (index + 1),
+                  top,
                 }}
               />
             </div>

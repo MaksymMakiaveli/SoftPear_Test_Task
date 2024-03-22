@@ -13,9 +13,9 @@ export const ProductVersion = () => {
   const [cardSize, setCardSize] = useState(0);
   const [headerSize, setHeaderSize] = useState(0);
 
-  const headerWrapperSize =
-    cardSize * (MOCK_DATA.length - 1) -
-    PRODUCT_VERSION_CONFIG.SECTION_OFFSET * (MOCK_DATA.length - 1);
+  console.log(cardSize, headerSize);
+
+  const headerWrapperSize = cardSize * (MOCK_DATA.length - 1);
 
   const setupCardRef = useCallback((node: HTMLElement | null) => {
     if (node) cardRefs.current.push(node);
@@ -61,7 +61,10 @@ export const ProductVersion = () => {
         >
           <div
             className="sticky"
-            style={{ top: PRODUCT_VERSION_CONFIG.HEADER_TOP }}
+            style={{
+              top:
+                PRODUCT_VERSION_CONFIG.LAYOUT_HEADER_HEIGHT - PRODUCT_VERSION_CONFIG.SECTION_OFFSET,
+            }}
             ref={headerRef}
           >
             <h3 className="gradient-text max-w-[690px] bg-clip-text text-4xl font-semibold text-transparent text-white md:text-6xl">
@@ -81,14 +84,18 @@ export const ProductVersion = () => {
           setupCardRef={setupCardRef}
         />
       </Container>
-      <img
-        src={Graphics}
-        loading="lazy"
-        alt="Graphic Lines"
-        width="2450"
-        height="931"
-        className="z-1 pointer-events-none absolute  left-0 right-0 top-0 w-[2355px] max-w-none -translate-x-[14%] -translate-y-[10%] rotate-[9.39deg]  select-none md:rotate-[9.39deg]  xl:w-[164%]"
-      />
+      <div className="pointer-events-none absolute inset-0 ">
+        <div className="sticky">
+          <img
+            src={Graphics}
+            loading="lazy"
+            alt="Graphic Lines"
+            width="2450"
+            height="931"
+            className="z-1 pointer-events-none  w-[2355px] max-w-none -translate-x-[14%] -translate-y-[10%] rotate-[9.39deg]  select-none md:rotate-[9.39deg]  xl:w-[164%]"
+          />
+        </div>
+      </div>
     </section>
   );
 };
