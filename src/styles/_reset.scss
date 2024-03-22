@@ -12,6 +12,11 @@
   //color: #ffffff;
 }
 
+body,
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -104,7 +109,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font-family: Lato, sans-serif;
+  font-family: 'Inter', sans-serif;
   vertical-align: baseline;
 }
 
