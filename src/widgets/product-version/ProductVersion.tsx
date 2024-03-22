@@ -13,8 +13,6 @@ export const ProductVersion = () => {
   const [cardSize, setCardSize] = useState(0);
   const [headerSize, setHeaderSize] = useState(0);
 
-  console.log(cardSize, headerSize);
-
   const headerWrapperSize = cardSize * (MOCK_DATA.length - 1);
 
   const setupCardRef = useCallback((node: HTMLElement | null) => {
