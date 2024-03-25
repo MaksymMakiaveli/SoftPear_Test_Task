@@ -20,7 +20,8 @@
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./"
   },
   "include": ["src"],
   "exclude": ["node_modules", "public", "dist", "vite.config.ts"],
