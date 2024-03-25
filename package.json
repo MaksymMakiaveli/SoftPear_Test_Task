@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "framer-motion": "^11.0.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -48,8 +47,9 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "pnpm run lint-staged:js",
     "**/*.{js,jsx,tsx,ts}": [
-      "prettier --write",
-      "eslint --max-warnings 0 ."
-    ]
+      "eslint --max-warnings 0 .",
+      "prettier --write"
+    ],
+    "**/*.{json,css,scss,md}": "prettier --write"
   }
 }
