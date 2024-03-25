@@ -48,40 +48,40 @@ export const MOCK_DATA = [
     ],
     imgSrc: Phones3,
   },
-  {
-    label: 'AI live dealer 1',
-    description: [
-      'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
-      'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
-      'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
-    ],
-    imgSrc: Phones3,
-  },
-  {
-    label: 'AI live dealer 2',
-    description: [
-      'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
-      'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
-      'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
-    ],
-    imgSrc: Phones3,
-  },
-  {
-    label: 'AI live dealer 3',
-    description: [
-      'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
-      'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
-      'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
-    ],
-    imgSrc: Phones3,
-  },
-  {
-    label: 'AI live dealer 4',
-    description: [
-      'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
-      'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
-      'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
-    ],
-    imgSrc: Phones3,
-  },
+  // {
+  //   label: 'AI live dealer 1',
+  //   description: [
+  //     'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
+  //     'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
+  //     'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
+  //   ],
+  //   imgSrc: Phones3,
+  // },
+  // {
+  //   label: 'AI live dealer 2',
+  //   description: [
+  //     'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
+  //     'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
+  //     'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
+  //   ],
+  //   imgSrc: Phones3,
+  // },
+  // {
+  //   label: 'AI live dealer 3',
+  //   description: [
+  //     'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
+  //     'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
+  //     'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
+  //   ],
+  //   imgSrc: Phones3,
+  // },
+  // {
+  //   label: 'AI live dealer 4',
+  //   description: [
+  //     'AI Live Dealer elevates online gaming by blending live casino thrills with advanced artificial intelligence. ',
+  //     'The players will enjoy personalised dealers, stunning live interactions and a real-time experience that will redefine your gaming user experience. ',
+  //     'Welcome to the future, where gaming and artificial intelligence collide for an unmatched experience!',
+  //   ],
+  //   imgSrc: Phones3,
+  // },
 ];

@@ -19,6 +19,10 @@ export default () => {
       sourcemap: true,
     },
 
+    server: {
+      host: '0.0.0.0',
+    },
+
     // ------------- Css configuration
     css: {
       devSourcemap: true,
