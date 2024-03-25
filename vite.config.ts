@@ -12,15 +12,11 @@ export default () => {
 
     // --------------- Build configuration
     build: {
-      outDir: 'build',
+      outDir: 'dist',
       rollupOptions: {
         cache: false,
       },
       sourcemap: true,
-    },
-
-    server: {
-      host: '0.0.0.0',
     },
 
     // ------------- Css configuration
