@@ -13,7 +13,7 @@ export const ProductVersion = () => {
   const [cardSize, setCardSize] = useState(0);
   const [headerSize, setHeaderSize] = useState(0);
 
-  const visibleCardSize = cardSize * 0.28;
+  const visibleCardSize = 104;
 
   const headerWrapperSize = cardSize * (MOCK_DATA.length - 1) + visibleCardSize - 40;
 
