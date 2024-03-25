@@ -54,7 +54,7 @@ export const Card = (props: Props) => {
           </div>
         </div>
         <div className="relative -mb-[110px] w-[421px] max-w-none flex-1 shrink-0 select-none self-center max-sm:ml-[43px] sm:mr-[-60px] lg:-mb-[190px] ">
-          <img src={imageSrc} className={imgClasses} {...restImgProps} />
+          <img src={imageSrc} className={imgClasses} alt={label} {...restImgProps} />
         </div>
       </div>
     </article>
