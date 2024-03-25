@@ -20,10 +20,10 @@ jobs:
           node-version: 20.x
 
       - name: Install dependencies
-        run: npx pnpm install
+        uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: pnpm build
+        run: npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
