@@ -20,7 +20,7 @@ jobs:
           node-version: 20.x
 
       - name: Install dependencies
-        uses: npx pnpm install
+        run: npx pnpm install
 
       - name: Build project
         run: pnpm build
