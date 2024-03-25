@@ -2,6 +2,8 @@
 
 This project showcases two sections built with React, TypeScript, and Tailwind CSS, fulfilling a test task for SoftPear. It incorporates eye-catching animations to enhance the user experience
 
+⚠️ [Website](https://maksymmakiaveli.github.io/SoftPear_Test_Task/) ⚠️
+
 > ---
 >
 > ### Tech stack
