@@ -9,6 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prettier": "prettier --check --write \"src/**/*\"",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "prepare": "husky && husky install"
   },
   "dependencies": {
@@ -47,7 +48,6 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "pnpm run lint-staged:js",
     "**/*.{js,jsx,tsx,ts}": [
-      "eslint --max-warnings 0 .",
       "prettier --write"
     ],
     "**/*.{json,css,scss,md}": "prettier --write"

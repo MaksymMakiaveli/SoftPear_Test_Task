@@ -23,7 +23,9 @@ This project showcases two sections built with React, TypeScript, and Tailwind C
 > nvm use
 > pnpm install
 > pnpm dev
-> // or
+> ```
+>
+> ```bash
 > nvm use
 > npm install
 > npm run dev
