@@ -9,7 +9,7 @@ export default () => {
 
   return defineConfig({
     plugins,
-
+    base: '/SoftPear_Test_Task/',
     // --------------- Build configuration
     build: {
       outDir: 'dist',
