@@ -55,9 +55,9 @@ export const ProductVersion = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-clip bg-gradient-to-b from-[#0E1121] to-[#3A3C67]"
+      className="relative w-full overflow-clip bg-gradient-to-b from-[#0E1121] to-[#3A3C67] "
     >
-      <Container className=" pb-4 md:pt-[70px]">
+      <Container className="pb-20">
         <div
           style={{
             minHeight: headerWrapperSize,
@@ -87,7 +87,7 @@ export const ProductVersion = () => {
           setupCardRef={setupCardRef}
         />
       </Container>
-      <div className="pointer-events-none absolute inset-0 ">
+      <div className="pointer-events-none absolute inset-0">
         <div className="sticky">
           <img
             src={Graphics}

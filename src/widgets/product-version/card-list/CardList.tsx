@@ -24,7 +24,12 @@ export const CardList = (props: Props) => {
       ref={wrapperRef}
       className="flex flex-col"
       style={{
-        marginTop: -(headerWrapperSize - headerSize - PRODUCT_VERSION_CONFIG.HEADER_START_STICKY),
+        marginTop: -(
+          headerWrapperSize -
+          headerSize -
+          PRODUCT_VERSION_CONFIG.HEADER_START_STICKY -
+          20
+        ),
       }}
     >
       <Each
@@ -35,17 +40,20 @@ export const CardList = (props: Props) => {
           const containerHeight =
             singleCardSize * (arr.length - index) -
             visibleCardSize * remainingLength +
-            PRODUCT_VERSION_CONFIG.CARD_GAP * (arr.length - index);
+            PRODUCT_VERSION_CONFIG.CARD_GAP * (arr.length - index - 1);
 
-          const marginTop = -(containerHeight - visibleCardSize - PRODUCT_VERSION_CONFIG.CARD_GAP);
+          const marginTop = -(
+            containerHeight -
+            visibleCardSize +
+            PRODUCT_VERSION_CONFIG.CARD_GAP / 2
+          );
 
           const top =
             index === arr.length - 1
               ? undefined
-              : headerSize +
-                PRODUCT_VERSION_CONFIG.HEADER_START_STICKY +
-                20 +
-                visibleCardSize * index;
+              : visibleCardSize * (index + 1) +
+                headerSize / 2 +
+                PRODUCT_VERSION_CONFIG.HEADER_START_STICKY;
 
           const styles: CSSProperties = {
             minHeight: index === arr.length - 1 ? undefined : fraction(containerHeight),
