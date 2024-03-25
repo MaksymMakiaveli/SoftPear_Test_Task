@@ -13,7 +13,9 @@ export const ProductVersion = () => {
   const [cardSize, setCardSize] = useState(0);
   const [headerSize, setHeaderSize] = useState(0);
 
-  const headerWrapperSize = cardSize * (MOCK_DATA.length - 1);
+  const visibleCardSize = cardSize * 0.28;
+
+  const headerWrapperSize = cardSize * (MOCK_DATA.length - 1) + visibleCardSize - 40;
 
   const setupCardRef = useCallback((node: HTMLElement | null) => {
     if (node) cardRefs.current.push(node);
@@ -24,13 +26,17 @@ export const ProductVersion = () => {
 
     if (!card) return;
 
-    setCardSize(card.offsetHeight);
+    requestAnimationFrame(() => {
+      setCardSize(card.offsetHeight);
+    });
   }, []);
 
   const handleResizeHeader = useCallback(() => {
     const header = headerRef.current;
     if (!header) return;
-    setHeaderSize(header.offsetHeight);
+    requestAnimationFrame(() => {
+      setHeaderSize(header.offsetHeight);
+    });
   }, []);
 
   useEffect(() => {
@@ -60,8 +66,7 @@ export const ProductVersion = () => {
           <div
             className="sticky"
             style={{
-              top:
-                PRODUCT_VERSION_CONFIG.LAYOUT_HEADER_HEIGHT - PRODUCT_VERSION_CONFIG.SECTION_OFFSET,
+              top: PRODUCT_VERSION_CONFIG.HEADER_START_STICKY,
             }}
             ref={headerRef}
           >
@@ -75,8 +80,8 @@ export const ProductVersion = () => {
         </div>
 
         <CardList
-          sectionRef={sectionRef}
           singleCardSize={cardSize}
+          visibleCardSize={visibleCardSize}
           headerSize={headerSize}
           headerWrapperSize={headerWrapperSize}
           setupCardRef={setupCardRef}
