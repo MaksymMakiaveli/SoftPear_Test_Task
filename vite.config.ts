@@ -11,6 +11,9 @@ export default () => {
     plugins,
     base: '/SoftPear_Test_Task/',
     // --------------- Build configuration
+    resolve: {
+      alias: [{ find: /^~/, replacement: '' }],
+    },
     build: {
       outDir: 'dist',
       rollupOptions: {
