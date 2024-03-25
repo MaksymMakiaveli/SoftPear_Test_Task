@@ -24,7 +24,7 @@ export const CardList = (props: Props) => {
       ref={wrapperRef}
       className="flex flex-col"
       style={{
-        marginTop: -(headerWrapperSize - headerSize - PRODUCT_VERSION_CONFIG.SECTION_OFFSET),
+        marginTop: -(headerWrapperSize - headerSize - PRODUCT_VERSION_CONFIG.HEADER_START_STICKY),
       }}
     >
       <Each
