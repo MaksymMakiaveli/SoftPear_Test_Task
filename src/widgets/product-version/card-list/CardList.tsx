@@ -2,29 +2,27 @@ import { Card } from '@entities/product';
 import { Each } from '@shared/UI';
 
 import { MOCK_DATA, PRODUCT_VERSION_CONFIG } from '../config';
-import { CSSProperties, RefObject, useRef } from 'react';
+import { CSSProperties, useRef } from 'react';
 
 export interface Props {
   singleCardSize: number;
   headerSize: number;
   headerWrapperSize: number;
-  sectionRef: RefObject<HTMLDivElement>;
+  visibleCardSize: number;
   setupCardRef: (node: HTMLElement | null) => void;
 }
 
+const fraction = (num: number) => Number(num.toFixed(2));
+
 export const CardList = (props: Props) => {
-  const { singleCardSize, headerWrapperSize, headerSize, setupCardRef } = props;
+  const { singleCardSize, visibleCardSize, headerWrapperSize, headerSize, setupCardRef } = props;
 
   const wrapperRef = useRef<HTMLDivElement>(null);
-
-  const firstCardHeight =
-    singleCardSize * (MOCK_DATA.length - 1) +
-    PRODUCT_VERSION_CONFIG.CARD_VISIBLE_HEIGHT * (MOCK_DATA.length - 1);
 
   return (
     <div
       ref={wrapperRef}
-      className="flex flex-col gap-3"
+      className="flex flex-col"
       style={{
         marginTop: -(headerWrapperSize - headerSize - PRODUCT_VERSION_CONFIG.SECTION_OFFSET),
       }}
@@ -32,42 +30,27 @@ export const CardList = (props: Props) => {
       <Each
         each={MOCK_DATA}
         render={(item, index, arr) => {
-          let styles: CSSProperties = {};
-          let top = undefined;
+          const remainingLength = arr.length - (index + 1);
 
-          if (index === 0) {
-            styles = {
-              minHeight: firstCardHeight,
-            };
+          const containerHeight =
+            singleCardSize * (arr.length - index) -
+            visibleCardSize * remainingLength +
+            PRODUCT_VERSION_CONFIG.CARD_GAP * (arr.length - index);
 
-            top =
-              firstCardHeight +
-              PRODUCT_VERSION_CONFIG.SECTION_OFFSET -
-              singleCardSize * (arr.length - 1);
-          } else if (arr.length - 1 === index) {
-            styles = {
-              marginTop: -(
-                firstCardHeight -
-                singleCardSize * (arr.length - 1) +
-                PRODUCT_VERSION_CONFIG.CARD_VISIBLE_HEIGHT
-              ),
-            };
-          } else {
-            styles = {
-              minHeight:
-                firstCardHeight +
-                (PRODUCT_VERSION_CONFIG.CARD_VISIBLE_HEIGHT +
-                  PRODUCT_VERSION_CONFIG.SECTION_OFFSET) -
-                singleCardSize * index,
-              marginTop: singleCardSize * index - firstCardHeight,
-            };
+          const marginTop = -(containerHeight - visibleCardSize - PRODUCT_VERSION_CONFIG.CARD_GAP);
 
-            top =
-              firstCardHeight -
-              singleCardSize * index -
-              PRODUCT_VERSION_CONFIG.CARD_VISIBLE_HEIGHT -
-              (PRODUCT_VERSION_CONFIG.LAYOUT_HEADER_HEIGHT + PRODUCT_VERSION_CONFIG.SECTION_OFFSET);
-          }
+          const top =
+            index === arr.length - 1
+              ? undefined
+              : headerSize +
+                PRODUCT_VERSION_CONFIG.HEADER_START_STICKY +
+                20 +
+                visibleCardSize * index;
+
+          const styles: CSSProperties = {
+            minHeight: index === arr.length - 1 ? undefined : fraction(containerHeight),
+            marginTop: index === 0 ? undefined : fraction(marginTop),
+          };
 
           return (
             <div key={item.label} style={styles} className="product-card">
