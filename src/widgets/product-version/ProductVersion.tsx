@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Graphics from '@assets/Graphics2.png';
 import { Container } from '@entities/layout';
 
-import { MOCK_DATA, PRODUCT_VERSION_CONFIG } from './config';
 import { CardList } from './card-list';
+import { MOCK_DATA } from './config';
 
 export const ProductVersion = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -63,13 +63,7 @@ export const ProductVersion = () => {
             minHeight: headerWrapperSize,
           }}
         >
-          <div
-            className="sticky"
-            style={{
-              top: PRODUCT_VERSION_CONFIG.HEADER_START_STICKY,
-            }}
-            ref={headerRef}
-          >
+          <div className="sticky" ref={headerRef}>
             <h3 className="gradient-text max-w-[690px] bg-clip-text text-4xl font-semibold text-transparent text-white md:text-6xl">
               Choose your own version of the product
             </h3>

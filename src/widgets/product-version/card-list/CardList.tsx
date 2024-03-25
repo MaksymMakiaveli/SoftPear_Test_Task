@@ -2,7 +2,7 @@ import { Card } from '@entities/product';
 import { Each } from '@shared/UI';
 
 import { MOCK_DATA, PRODUCT_VERSION_CONFIG } from '../config';
-import { CSSProperties, useRef } from 'react';
+import { CSSProperties } from 'react';
 
 export interface Props {
   singleCardSize: number;
@@ -17,12 +17,9 @@ const fraction = (num: number) => Number(num.toFixed(2));
 export const CardList = (props: Props) => {
   const { singleCardSize, visibleCardSize, headerWrapperSize, headerSize, setupCardRef } = props;
 
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
   return (
     <div
-      ref={wrapperRef}
-      className="flex flex-col"
+      className="flex flex-col gap-4"
       style={{
         marginTop: -(
           headerWrapperSize -
@@ -38,22 +35,14 @@ export const CardList = (props: Props) => {
           const remainingLength = arr.length - (index + 1);
 
           const containerHeight =
-            singleCardSize * (arr.length - index) -
-            visibleCardSize * remainingLength +
-            PRODUCT_VERSION_CONFIG.CARD_GAP * (arr.length - index - 1);
+            singleCardSize * (remainingLength + 1) - visibleCardSize * remainingLength;
 
-          const marginTop = -(
-            containerHeight -
-            visibleCardSize +
-            PRODUCT_VERSION_CONFIG.CARD_GAP / 2
-          );
+          const marginTop = -(containerHeight - visibleCardSize);
 
           const top =
             index === arr.length - 1
               ? undefined
-              : visibleCardSize * (index + 1) +
-                headerSize / 2 +
-                PRODUCT_VERSION_CONFIG.HEADER_START_STICKY;
+              : visibleCardSize * index + PRODUCT_VERSION_CONFIG.LAYOUT_HEADER_HEIGHT + 20;
 
           const styles: CSSProperties = {
             minHeight: index === arr.length - 1 ? undefined : fraction(containerHeight),
